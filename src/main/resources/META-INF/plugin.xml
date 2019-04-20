@@ -1,0 +1,15 @@
+<idea-plugin>
+    <id>com.egoshard.intellij.k8s-runtime-config-plugin</id>
+    <name>Kubernetes Runtime Configuration</name>
+    <vendor email="egoshard@gmail.com" url="http://www.egoshard.com">EgoShard</vendor>
+    <description><![CDATA[
+    This plugin loads Kubernetes ConfigMap and Secret data values as environment variables in an IntelliJ run configuration.<br>
+    ]]></description>
+    <depends>com.intellij.modules.lang</depends>
+    <extensions defaultExtensionNs="com.intellij">
+        <runConfigurationExtension id="k8s-config-plugin" implementation="com.egoshard.intellij.k8s.K8sRunConfiguration"/>
+    </extensions>
+    <actions>
+        <!-- Add your actions here -->
+    </actions>
+</idea-plugin>
