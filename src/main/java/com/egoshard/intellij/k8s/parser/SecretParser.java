@@ -44,10 +44,10 @@ public class SecretParser extends AbstractParser {
         Map<String, String> stringData = super.getData(source, KEY_STRING_DATA);
 
         Decoder decoder = getDecoder();
-        result = data.keySet().stream()
-                .collect(Collectors.toMap(
-                        key -> key, key -> new String(decoder.decode(String.valueOf(data.get(key)))), (a, b) -> b)
-                );
+        result = data.keySet().stream().collect(
+                Collectors.toMap(
+                        s -> s,
+                        s -> new String(decoder.decode(String.valueOf(data.get(s)))), (a, b) -> b));
         stringData.keySet().forEach(key -> result.put(key, stringData.get(key)));
 
         return result;

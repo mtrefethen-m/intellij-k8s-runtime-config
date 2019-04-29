@@ -26,7 +26,6 @@ import java.util.Map;
 public abstract class AbstractParser implements ConfigParser {
 
     static final String KEY_DATA = "data";
-    private static final String KEY_KIND = "kind";
     private static final String MSG_SOURCE_MISSING = "The source parameter is required.";
     private static final String MSG_KEY_MISSING = "The provided configuration cannot be parsed. The key, [%s], does not exist in the source object.";
     private static final String MSG_INCORRECT_KIND = "The provided source data is invalid or not the correct Kubernetes kind for this parser.";
@@ -37,7 +36,7 @@ public abstract class AbstractParser implements ConfigParser {
      * @param source configuration map
      */
     void validate(@NotNull(MSG_SOURCE_MISSING) Map<String, Object> source) {
-        if (!source.getOrDefault(KEY_KIND, "INVALID").equals(getSupportedKind().getKey())) {
+        if (!source.getOrDefault(ConfigParser.KEY_KIND, "INVALID").equals(getSupportedKind().getKey())) {
             throw new IllegalArgumentException(MSG_INCORRECT_KIND);
         }
     }

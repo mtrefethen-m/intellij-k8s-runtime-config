@@ -44,36 +44,27 @@ class SecretParserTest {
     @DisplayName("Tests that secret data is decoded and parsed correctly")
     @Test
     void testSecretDataParser() {
-
         Map<String, String> result = parser.parse(ConfigTestDataUtils.getSecretData());
-
         assertTrue(result.containsKey(ConfigTestDataUtils.TEST_KEY));
         assertEquals(ConfigTestDataUtils.TEST_VALUE, result.get(ConfigTestDataUtils.TEST_KEY));
-
     }
 
     @DisplayName("Tests that secret string data is parsed correctly")
     @Test
     void testSecretStringDataParser() {
-
         Map<String, String> result = parser.parse(ConfigTestDataUtils.getSecretStringData());
-
         assertTrue(result.containsKey(ConfigTestDataUtils.TEST_STRING_DATA_KEY));
         assertEquals(ConfigTestDataUtils.TEST_STRING_DATA_VALUE, result.get(ConfigTestDataUtils.TEST_STRING_DATA_KEY));
-
     }
 
     @DisplayName("Tests that secret data and string data is parsed correctly")
     @Test
     void testSecretDataStringDataParser() {
-
         Map<String, String> result = parser.parse(ConfigTestDataUtils.getSecretDataAndStringData());
-
         assertTrue(result.containsKey(ConfigTestDataUtils.TEST_KEY));
         assertEquals(ConfigTestDataUtils.TEST_VALUE, result.get(ConfigTestDataUtils.TEST_KEY));
         assertTrue(result.containsKey(ConfigTestDataUtils.TEST_STRING_DATA_KEY));
         assertEquals(ConfigTestDataUtils.TEST_STRING_DATA_VALUE, result.get(ConfigTestDataUtils.TEST_STRING_DATA_KEY));
-
     }
 
 }

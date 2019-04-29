@@ -22,6 +22,8 @@ import java.util.Map;
  */
 public interface ConfigParser {
 
+    String KEY_KIND = "kind";
+
     /**
      * Parses a source map matching the YAML structure of a Kubernetes configuration file.
      *
