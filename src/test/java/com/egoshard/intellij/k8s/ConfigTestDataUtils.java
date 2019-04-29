@@ -30,7 +30,7 @@ public class ConfigTestDataUtils {
     public static final String TEST_STRING_DATA_VALUE = "test_string_data_value";
     private static final String KEY_DATA = (String) TestUtils.getFinalStatic(AbstractParser.class, "KEY_DATA");
     private static final String KEY_STRING_DATA = (String) TestUtils.getFinalStatic(SecretParser.class, "KEY_STRING_DATA");
-    private static final String KEY_KIND = (String) TestUtils.getFinalStatic(AbstractParser.class, "KEY_KIND");
+    private static final String KEY_KIND = (String) TestUtils.getFinalStatic(ConfigParser.class, "KEY_KIND");
     private static final String TEST_VALUE_ENCODED = "dGVzdF9kYXRhX3ZhbHVl";
 
     public static Map<String, Object> getInvalidData() {
