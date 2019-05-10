@@ -61,13 +61,13 @@ class ConfigPanel<T extends RunConfigurationBase> extends JPanel {
         files = new ListTableModel<>(file);
         table = new TableView<>(files);
         table.getEmptyText().setText(MSG_NO_FILE_SELECTED);
-
         table.setColumnSelectionAllowed(false);
         table.setShowGrid(false);
         table.setDragEnabled(true);
         table.setShowHorizontalLines(false);
         table.setShowVerticalLines(false);
         table.setIntercellSpacing(new Dimension(0, 0));
+        table.setPreferredSize(new Dimension(-1, 150));
 
         // enable checkbox
         checkBox = new JCheckBox(MSG_ENABLE);
@@ -84,14 +84,14 @@ class ConfigPanel<T extends RunConfigurationBase> extends JPanel {
         JPanel checkboxPanel = new JPanel(new FlowLayout(FlowLayout.LEADING, JBUI.scale(5), JBUI.scale(5)));
         checkboxPanel.add(checkBox);
 
-        JPanel decoratorPanel = decorator.createPanel();
-        Dimension size = new Dimension(-1, 150);
-        decoratorPanel.setMinimumSize(size);
-        decoratorPanel.setPreferredSize(size);
+        JPanel jPanel = decorator.createPanel();
+        Dimension size = new Dimension(-1, -1);
+        jPanel.setMinimumSize(size);
+        jPanel.setPreferredSize(size);
 
         setLayout(new BorderLayout());
         add(checkboxPanel, BorderLayout.NORTH);
-        add(decoratorPanel, BorderLayout.CENTER);
+        add(jPanel, BorderLayout.CENTER);
 
     }
 

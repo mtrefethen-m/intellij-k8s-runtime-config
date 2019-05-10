@@ -86,7 +86,7 @@ class K8sRunConfiguration extends RunConfigurationExtension {
      */
     @Nullable
     @Override
-    protected <P extends RunConfigurationBase> SettingsEditor<P> createEditor(@NotNull P configuration) {
+    protected <P extends RunConfigurationBase<?>> SettingsEditor<P> createEditor(@NotNull P configuration) {
         return new ConfigEditor<>(new ConfigPanelFactory<>(), configuration);
     }
 
