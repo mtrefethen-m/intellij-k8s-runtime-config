@@ -16,11 +16,34 @@
 <idea-plugin>
     <id>com.egoshard.intellij.k8s-runtime-config-plugin</id>
     <name>Kubernetes Runtime Configuration</name>
+    <version>1.0.0</version>
     <vendor email="egoshard@gmail.com" url="https://github.com/egoshard/intellij-k8s-runtime-config">Matt Trefethen</vendor>
     <description><![CDATA[
-    This plugin loads Kubernetes ConfigMap, Secret and String data values as environment variables in an IntelliJ run configuration.
+    <p>This plugin loads Kubernetes ConfigMap, Secret and String Data values as environment variables in an IntelliJ run configuration.</p>
+
+    <p>Usage:</p>
+    <ol>
+        <li>Run -> Edit Configurations</li>
+        <li>K8s Configuration tab</li>
+        <li>Enable configuration support</li>
+        <li>Add Kubernetes configuration files</li>
+        <li>Run configuration</li>
+    </ol>
+
+    <p>During run configuration executions configuration files will be parsed in list order and their values injected
+    as environment variables to the executing module. Configuration files should be ordered in the order they are consumed
+    within deployments from generic to specific. Configuration keys with matching names in specific files will override
+    previous values exactly as the would during a Kubernetes deployment</p>
+
     ]]></description>
-    <version>1.0.0</version>
+    <change-notes>
+        <![CDATA[
+        <p><strong>1.0</strong>:</p>
+        <ul>
+            <li>Initial support for Kubernetes configuration files and IntelliJ 2018</li>
+        </ul>
+        ]]>
+    </change-notes>
     <idea-version since-build="172" until-build="183.*"/>
     <depends>com.intellij.modules.lang</depends>
     <extensions defaultExtensionNs="com.intellij">
