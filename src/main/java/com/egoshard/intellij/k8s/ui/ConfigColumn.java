@@ -29,7 +29,10 @@ import javax.swing.table.TableCellEditor;
 import javax.swing.table.TableCellRenderer;
 import java.awt.*;
 
-public class ConfigColumn extends ColumnInfo<ConfigEntry, String> {
+/**
+ * IntelliJ UI column for rendering config entries.
+ */
+class ConfigColumn extends ColumnInfo<ConfigEntry, String> {
 
     private static final String MSG_FILE_NOT_FOUND = "File not found.";
     private static final String MSG_PATH = "Path";
@@ -43,6 +46,9 @@ public class ConfigColumn extends ColumnInfo<ConfigEntry, String> {
         return true;
     }
 
+    /**
+     * @see com.intellij.util.ui.table.ComboBoxTableCellEditor
+     */
     @Nullable
     @Override
     public TableCellEditor getEditor(ConfigEntry entry) {
@@ -60,6 +66,10 @@ public class ConfigColumn extends ColumnInfo<ConfigEntry, String> {
         return entry.getPath();
     }
 
+    /**
+     * @see com.intellij.util.ui.table.IconTableCellRenderer
+     * @see com.intellij.util.ui.LocalPathCellEditor
+     */
     @Override
     public TableCellRenderer getRenderer(final ConfigEntry entry) {
         return new DefaultTableCellRenderer() {

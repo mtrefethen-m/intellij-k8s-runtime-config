@@ -47,20 +47,19 @@ import java.util.HashMap;
 import java.util.Map;
 
 import static org.junit.jupiter.api.Assertions.*;
-import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.*;
 
 @DisplayName("Test configuration editor")
-class ConfigEditorTest extends TestUtils {
+class ConfigEditorTest {
 
     private static final String PATH = "path";
-    private static final String ELEMENT_ENTRIES = getFinalStaticString(ConfigEditor.class, "ELEMENT_ENTRIES");
-    private static final String ELEMENT_ENTRY = getFinalStaticString(ConfigEditor.class, "ELEMENT_ENTRY");
-    private static final String FIELD_ENABLED = getFinalStaticString(ConfigEditor.class, "FIELD_ENABLED");
-    private static final String FIELD_PATH = getFinalStaticString(ConfigEditor.class, "FIELD_PATH");
-    private static final String SERIALIZATION_ID = getFinalStaticString(ConfigEditor.class, "SERIALIZATION_ID");
-    private static final String TITLE = getFinalStaticString(ConfigEditor.class, "TITLE");
-    private static final String MSG_PATH_INVALID = getFinalStaticString(ConfigEditor.class, "MSG_PATH_INVALID");
+    private static final String ELEMENT_ENTRIES = TestUtils.getFinalStaticString(ConfigEditor.class, "ELEMENT_ENTRIES");
+    private static final String ELEMENT_ENTRY = TestUtils.getFinalStaticString(ConfigEditor.class, "ELEMENT_ENTRY");
+    private static final String FIELD_ENABLED = TestUtils.getFinalStaticString(ConfigEditor.class, "FIELD_ENABLED");
+    private static final String FIELD_PATH = TestUtils.getFinalStaticString(ConfigEditor.class, "FIELD_PATH");
+    private static final String SERIALIZATION_ID = TestUtils.getFinalStaticString(ConfigEditor.class, "SERIALIZATION_ID");
+    private static final String TITLE = TestUtils.getFinalStaticString(ConfigEditor.class, "TITLE");
+    private static final String MSG_PATH_INVALID = TestUtils.getFinalStaticString(ConfigEditor.class, "MSG_PATH_INVALID");
     private static final String YAML_VALUE = "{\"kind\":\"ConfigMap\",\"data\":{\"test_key\":\"test_data\"}}";
 
     private static final String TEST_CONFIG_MAP = "TestConfigMap.yml";
@@ -86,6 +85,7 @@ class ConfigEditorTest extends TestUtils {
     @Captor
     private ArgumentCaptor<ConfigSettings> settingsCaptor;
 
+    @SuppressWarnings("unchecked")
     @BeforeEach
     void setUp() {
         MockitoAnnotations.initMocks(this);

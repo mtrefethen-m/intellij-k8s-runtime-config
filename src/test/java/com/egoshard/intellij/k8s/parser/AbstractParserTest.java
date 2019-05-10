@@ -66,7 +66,7 @@ class AbstractParserTest {
     @Test
     void testGetData() {
         TestParser parser = new TestParser(Kind.CONFIGMAP);
-        Map<String, String> result = parser.getData(ConfigTestDataUtils.getConfigMapData(), KEY_DATA);
+        Map<String, Object> result = parser.getData(ConfigTestDataUtils.getConfigMapData(), KEY_DATA);
 
         assertTrue(result.containsKey(ConfigTestDataUtils.TEST_KEY));
         assertEquals(ConfigTestDataUtils.TEST_VALUE, result.get(ConfigTestDataUtils.TEST_KEY));
@@ -78,7 +78,7 @@ class AbstractParserTest {
         Map<String, Object> source = new HashMap<>();
 
         TestParser parser = new TestParser(Kind.CONFIGMAP);
-        Map<String, String> result = parser.getData(source, KEY_DATA);
+        Map<String, Object> result = parser.getData(source, KEY_DATA);
 
         assertNotNull(result);
         assertTrue(result.isEmpty());
@@ -95,7 +95,7 @@ class AbstractParserTest {
 
     class TestParser extends AbstractParser {
 
-        private Kind kind;
+        private final Kind kind;
 
         TestParser(Kind kind) {
             this.kind = kind;
@@ -112,7 +112,7 @@ class AbstractParserTest {
         }
 
         @Override
-        Map<String, String> getData(@NotNull Map<String, Object> source, @NotNull String key) {
+        Map<String, Object> getData(@NotNull Map<String, Object> source, @NotNull String key) {
             return super.getData(source, key);
         }
 

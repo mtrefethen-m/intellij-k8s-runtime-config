@@ -36,7 +36,7 @@ import java.awt.*;
 import java.util.ArrayList;
 import java.util.Map;
 
-public class ConfigPanel<T extends RunConfigurationBase> extends JPanel {
+class ConfigPanel<T extends RunConfigurationBase> extends JPanel {
 
     private static final String MSG_NO_FILE_SELECTED = "No file selected";
     private static final String MSG_SELECT_K8S_FILE = "Select Kubernetes ConfigMap or Secret File";

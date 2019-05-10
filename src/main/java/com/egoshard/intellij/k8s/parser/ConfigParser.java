@@ -40,14 +40,14 @@ public interface ConfigParser {
     Kind getSupportedKind();
 
     /**
-     * Kind enumeration
+     * Configuration kind enumeration
      */
     enum Kind {
 
         CONFIGMAP("ConfigMap"),
         SECRET("Secret");
 
-        private String key;
+        private final String key;
 
         Kind(String key) {
             this.key = key;

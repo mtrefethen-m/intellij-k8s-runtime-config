@@ -36,19 +36,17 @@ import java.util.Map;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
-import static org.mockito.ArgumentMatchers.*;
-import static org.mockito.Mockito.eq;
 import static org.mockito.Mockito.*;
 
 @DisplayName("Tests ConfigEntry functionality")
-class ConfigEntryTest extends TestUtils {
+class ConfigEntryTest {
 
-    private static final String KEY_KIND = getFinalStaticString(ConfigParser.class, "KEY_KIND");
-    private static final String KEY_DATA = getFinalStaticString(AbstractParser.class, "KEY_DATA");
-    private static final String MSG_SOURCE_NOT_EXIST = getFinalStaticString(ConfigEntry.class, "MSG_SOURCE_NOT_EXIST");
-    private static final String MSG_SOURCE_INVALID = getFinalStaticString(ConfigEntry.class, "MSG_SOURCE_INVALID");
-    private static final String MSG_SOURCE_WRONGKIND = getFinalStaticString(ConfigEntry.class, "MSG_SOURCE_WRONGKIND");
-    private static final String MSG_SOURCE_NULL = getFinalStaticString(ConfigEntry.class, "MSG_SOURCE_NULL");
+    private static final String KEY_KIND = TestUtils.getFinalStaticString(ConfigParser.class, "KEY_KIND");
+    private static final String KEY_DATA = TestUtils.getFinalStaticString(AbstractParser.class, "KEY_DATA");
+    private static final String MSG_SOURCE_NOT_EXIST = TestUtils.getFinalStaticString(ConfigEntry.class, "MSG_SOURCE_NOT_EXIST");
+    private static final String MSG_SOURCE_INVALID = TestUtils.getFinalStaticString(ConfigEntry.class, "MSG_SOURCE_INVALID");
+    private static final String MSG_SOURCE_WRONGKIND = TestUtils.getFinalStaticString(ConfigEntry.class, "MSG_SOURCE_WRONGKIND");
+    private static final String MSG_SOURCE_NULL = TestUtils.getFinalStaticString(ConfigEntry.class, "MSG_SOURCE_NULL");
     private static final String PATH = "path";
     private static final String YAML_VALUE = "{\"%s\":\"%s\",\"%s\":{\"test_key\":\"test_data\"}}";
     private static final String YAML_EMPTY = "{}";
@@ -133,7 +131,7 @@ class ConfigEntryTest extends TestUtils {
     @DisplayName("Tests parse, missing parser")
     @Test
     void testParseInvalidKind() throws FileNotFoundException {
-        doReturn(getTestYamlStream(KEY_KIND, YAML_INVALID, KEY_DATA))
+        doReturn(getTestYamlStream(YAML_INVALID))
                 .when(mockFileUtil).getStream(any(RunConfigurationBase.class), anyString());
         entry = new ConfigEntry(mockConfigParsers, mockFileUtil, mockRunconfiguration, PATH);
         ConfigFileException exception = assertThrows(ConfigFileException.class, () -> entry.parse());
@@ -147,7 +145,7 @@ class ConfigEntryTest extends TestUtils {
                 ConfigParser.Kind.CONFIGMAP.getKey(), mockConfigMapParser,
                 ConfigParser.Kind.SECRET.getKey(), mockSecretParser
         );
-        doReturn(getTestYamlStream(KEY_KIND, ConfigParser.Kind.CONFIGMAP.getKey(), KEY_DATA))
+        doReturn(getTestYamlStream(ConfigParser.Kind.CONFIGMAP.getKey()))
                 .when(mockFileUtil).getStream(any(RunConfigurationBase.class), anyString());
         entry = new ConfigEntry(parsers, mockFileUtil, mockRunconfiguration, PATH);
         entry.parse();
@@ -162,7 +160,7 @@ class ConfigEntryTest extends TestUtils {
                 ConfigParser.Kind.CONFIGMAP.getKey(), mockConfigMapParser,
                 ConfigParser.Kind.SECRET.getKey(), mockSecretParser
         );
-        doReturn(getTestYamlStream(KEY_KIND, ConfigParser.Kind.SECRET.getKey(), KEY_DATA))
+        doReturn(getTestYamlStream(ConfigParser.Kind.SECRET.getKey()))
                 .when(mockFileUtil).getStream(any(RunConfigurationBase.class), anyString());
         entry = new ConfigEntry(parsers, mockFileUtil, mockRunconfiguration, PATH);
         entry.parse();
@@ -170,8 +168,8 @@ class ConfigEntryTest extends TestUtils {
         verify(mockSecretParser).parse(anyMap());
     }
 
-    private InputStream getTestYamlStream(String kindKey, String kindValue, String dataKey) {
-        return new ByteArrayInputStream(String.format(YAML_VALUE, kindKey, kindValue, dataKey).getBytes());
+    private InputStream getTestYamlStream(String kindValue) {
+        return new ByteArrayInputStream(String.format(YAML_VALUE, ConfigEntryTest.KEY_KIND, kindValue, ConfigEntryTest.KEY_DATA).getBytes());
     }
 
     class TestFileNotFoundUtil extends ConfigFileUtil {

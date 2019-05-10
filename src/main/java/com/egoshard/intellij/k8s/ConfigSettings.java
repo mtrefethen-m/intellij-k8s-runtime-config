@@ -18,6 +18,9 @@ package com.egoshard.intellij.k8s;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Configuration settings wrapper
+ */
 public class ConfigSettings {
 
     private final boolean enabled;

@@ -25,6 +25,9 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.InputStream;
 
+/**
+ * Utility for file handling
+ */
 public class ConfigFileUtil {
 
     private static final Logger logger = Logger.getInstance(ConfigFileUtil.class);

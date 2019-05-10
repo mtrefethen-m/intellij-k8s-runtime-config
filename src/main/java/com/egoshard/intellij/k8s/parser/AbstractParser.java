@@ -52,8 +52,8 @@ public abstract class AbstractParser implements ConfigParser {
      * @return map key/value pairs or an empty map if the key does not exist in the source map.
      */
     @SuppressWarnings("unchecked")
-    Map<String, String> getData(@NotNull(MSG_SOURCE_MISSING) Map<String, Object> source, @NotNull(MSG_KEY_MISSING) String key) {
-        return (Map<String, String>) source.getOrDefault(key, new HashMap<>());
+    Map<String, Object> getData(@NotNull(MSG_SOURCE_MISSING) Map<String, Object> source, @NotNull(MSG_KEY_MISSING) String key) {
+        return (Map<String, Object>) source.getOrDefault(key, new HashMap<>());
     }
 
 }

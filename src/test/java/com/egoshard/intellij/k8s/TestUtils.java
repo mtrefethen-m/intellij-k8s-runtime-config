@@ -35,14 +35,4 @@ public class TestUtils {
         return String.valueOf(getFinalStatic(clazz, fieldName));
     }
 
-    public Object getPrivateField(Class clazz, String fieldName, Object source) {
-        try {
-            Field field = clazz.getDeclaredField(fieldName);
-            field.setAccessible(true);
-            return field.get(source);
-        } catch (NoSuchFieldException | IllegalAccessException e) {
-            throw new RuntimeException(MSG_REFLECTION_ERROR);
-        }
-    }
-
 }

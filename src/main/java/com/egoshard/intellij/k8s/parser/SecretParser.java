@@ -22,7 +22,7 @@ import static java.util.Base64.Decoder;
 import static java.util.Base64.getDecoder;
 
 /**
- * Parsers secret configuration files into discrete environment variable key/value pairs.
+ * Parses secret configuration files into discrete environment variable key/value pairs.
  */
 public class SecretParser extends AbstractParser {
 
@@ -40,15 +40,15 @@ public class SecretParser extends AbstractParser {
     @Override
     public Map<String, String> parse(Map<String, Object> source) {
         Map<String, String> result;
-        Map<String, String> data = super.getData(source, KEY_DATA);
-        Map<String, String> stringData = super.getData(source, KEY_STRING_DATA);
+        Map<String, Object> data = super.getData(source, KEY_DATA);
+        Map<String, Object> stringData = super.getData(source, KEY_STRING_DATA);
 
         Decoder decoder = getDecoder();
         result = data.keySet().stream().collect(
                 Collectors.toMap(
                         s -> s,
                         s -> new String(decoder.decode(String.valueOf(data.get(s)))), (a, b) -> b));
-        stringData.keySet().forEach(key -> result.put(key, stringData.get(key)));
+        stringData.keySet().forEach(key -> result.put(key, String.valueOf(stringData.get(key))));
 
         return result;
     }

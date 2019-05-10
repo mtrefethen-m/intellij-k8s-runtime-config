@@ -19,7 +19,7 @@ import java.util.Map;
 import java.util.stream.Collectors;
 
 /**
- *
+ * Parses ConfigMap files into discrete environment variable key/value pairs.
  */
 public class ConfigMapParser extends AbstractParser {
 
@@ -31,11 +31,9 @@ public class ConfigMapParser extends AbstractParser {
      */
     @Override
     public Map<String, String> parse(Map<String, Object> source) {
-        Map<String, String> data = super.getData(source, KEY_DATA);
+        Map<String, Object> data = super.getData(source, KEY_DATA);
         return data.keySet().stream()
-                .collect(Collectors.toMap(
-                        key -> key, data::get, (a, b) -> b)
-                );
+                .collect(Collectors.toMap(key -> key, key -> String.valueOf(data.get(key)), (a, b) -> b));
     }
 
     /**

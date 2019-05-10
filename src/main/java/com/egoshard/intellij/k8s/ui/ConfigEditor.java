@@ -37,7 +37,7 @@ import java.io.IOException;
 import java.util.*;
 
 /**
- * @param <T>
+ * User interface editor provider.
  */
 public class ConfigEditor<T extends RunConfigurationBase> extends SettingsEditor<T> {
 
@@ -147,9 +147,11 @@ public class ConfigEditor<T extends RunConfigurationBase> extends SettingsEditor
 
 
     /**
-     * @param config
-     * @param params
-     * @return
+     * Parses all configuration entries in settings and builds a variable map.
+     *
+     * @param config run configuration
+     * @param params parameter map returned if settings are disable or null
+     * @return configuration map
      */
     public static Map<String, String> parse(RunConfigurationBase config, Map<String, String> params) throws ExecutionException {
         ConfigSettings settings = config.getUserData(SETTING_KEY);
