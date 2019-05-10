@@ -13,13 +13,11 @@ Restart intelliJ.
 
 ### Usage
 
-- Run -> Edit Configurations
+- <kbd>Run</kbd> -> <kbd>Edit Configurations</kbd>
 - Select or create a new configuration
-- "K8s Config" tab
-- Select "Enable"
-- Add Kubernetes configuration files
-- Run configuration
-
-
+- <kbd>K8s Config</kbd> tab
+- <kbd>Enable</kbd> enables or disables variable injection for a config 
+- Add Kubernetes ConfigMap or Secret configuration files
+- <kbd>Apply</kbd> or <kbd>Ok</kbd>
 
 During run configuration execution, configuration files will be parsed in list order and their values injected as environment variables to the executing module. Configuration files should be ordered in the order they are consumed within deployments from generic to specific. Configuration keys with matching names in specific files will override previous values exactly as the would during a Kubernetes deployment
