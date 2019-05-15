@@ -1,4 +1,6 @@
-## intelliJ Kubernetes RunConfiguration
+## IntelliJ Kubernetes RunConfiguration
+[IntelliJ Plugin Repository](https://plugins.jetbrains.com/plugin/12394-kubernetes-runtime-configuration)
+
 
 This plugin loads Kubernetes ConfigMap, Secret and String Data values as environment variables in an IntelliJ run configuration. This allows for development of Kubernetes deployable modules without the need to run Kubernetes on local development environments which may not have enough resources.
 
