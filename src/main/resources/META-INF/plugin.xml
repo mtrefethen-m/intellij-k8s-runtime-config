@@ -45,6 +45,7 @@
         <ul>
             <li>Additional error handling to accommodate situations where shared configuration files are copied from one project or code branch to another which does not contain the Yaml configuration files.</li>
         </ul>
+
         <p><strong>1.0.0</strong>:</p>
         <ul>
             <li>Initial support for Kubernetes configuration files and IntelliJ 2018</li>
