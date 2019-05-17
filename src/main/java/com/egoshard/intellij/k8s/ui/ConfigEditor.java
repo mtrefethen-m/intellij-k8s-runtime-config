@@ -56,8 +56,8 @@ public class ConfigEditor<T extends RunConfigurationBase> extends SettingsEditor
             ConfigParser.Kind.CONFIGMAP.getKey(), new ConfigMapParser(),
             ConfigParser.Kind.SECRET.getKey(), new SecretParser()
     );
-    private static final String MSG_PATH_INVALID = "Kubernetes configuration has an invalid path, [%s].";
-    private static final String MSG_PARSE_FAIL = "Unable to parse configuration file, [%s].";
+    private static final String MSG_PATH_INVALID = "Kubernetes configuration has an invalid path, [%s]. This may have been caused by using shared configuration files in conjunction with a missing Yaml configuration file.";
+    private static final String MSG_PARSE_FAIL = "Unable to parse configuration file, [%s]. %s";
 
     private static ConfigFileUtil fileUtil;
     private final ConfigPanel panel;
@@ -138,9 +138,8 @@ public class ConfigEditor<T extends RunConfigurationBase> extends SettingsEditor
     public static void validate(RunConfigurationBase config) {
         Optional.ofNullable(config.getUserData(SETTING_KEY)).ifPresent(settings -> {
             if (settings.isEnabled()) {
-                settings.getEntries().stream().filter(entry -> !entry.validate()).findFirst().ifPresent(entry -> {
-                    throw new IllegalArgumentException(String.format(MSG_PATH_INVALID, entry.getPath()));
-                });
+                settings.getEntries().stream().filter(entry -> !entry.validate()).findFirst()
+                        .ifPresent(entry -> logger.error(String.format(MSG_PATH_INVALID, entry.getPath())));
             }
         });
     }
@@ -161,7 +160,7 @@ public class ConfigEditor<T extends RunConfigurationBase> extends SettingsEditor
                 try {
                     result.putAll(entry.parse());
                 } catch (IllegalArgumentException | IOException | ConfigFileException ex) {
-                    throw new ExecutionException(String.format(MSG_PARSE_FAIL, entry.getPath()), ex);
+                    throw new ExecutionException(String.format(MSG_PARSE_FAIL, entry.getPath(), ex.getMessage()), ex);
                 }
             }
             return result;

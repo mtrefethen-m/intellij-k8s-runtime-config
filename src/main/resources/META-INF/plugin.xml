@@ -41,15 +41,6 @@
     ]]></description>
     <change-notes>
         <![CDATA[
-        <p><strong>1.1.0</strong>:</p>
-        <ul>
-            <li>Update gradle-intellij-plugin and added support for Intellij 2019.1</li>
-        </ul>
-
-        <p><strong>1.0.0</strong>:</p>
-        <ul>
-            <li>Initial support for Kubernetes configuration files and IntelliJ 2018</li>
-        </ul>
         ]]>
     </change-notes>
     <idea-version since-build="172" until-build="183.*"/>
