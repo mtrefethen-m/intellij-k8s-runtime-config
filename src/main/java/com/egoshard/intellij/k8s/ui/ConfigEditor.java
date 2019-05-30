@@ -139,7 +139,7 @@ public class ConfigEditor<T extends RunConfigurationBase> extends SettingsEditor
         Optional.ofNullable(config.getUserData(SETTING_KEY)).ifPresent(settings -> {
             if (settings.isEnabled()) {
                 settings.getEntries().stream().filter(entry -> !entry.validate()).findFirst()
-                        .ifPresent(entry -> logger.error(String.format(MSG_PATH_INVALID, entry.getPath())));
+                        .ifPresent(entry -> logger.warn(String.format(MSG_PATH_INVALID, entry.getPath())));
             }
         });
     }
