@@ -16,7 +16,7 @@
 <idea-plugin>
     <id>com.egoshard.intellij.k8s-runtime-config-plugin</id>
     <name>Kubernetes Runtime Configuration</name>
-    <version>1.1.0</version>
+    <version>1.1.2</version>
     <vendor email="egoshard@gmail.com" url="https://github.com/egoshard/intellij-k8s-runtime-config">Matt Trefethen</vendor>
     <description><![CDATA[
     <p>This plugin loads Kubernetes ConfigMap, Secret and String Data values as environment variables in an IntelliJ run configuration.
@@ -41,6 +41,11 @@
     ]]></description>
     <change-notes>
         <![CDATA[
+        <p><strong>1.1.2</strong>:</p>
+        <ul>
+            <li>Minor change to logging to avoid automatically thrown exception on logger error method.</li>
+        </ul>
+
         <p><strong>1.1.1</strong>:</p>
         <ul>
             <li>Additional error handling to accommodate situations where shared configuration files are copied from one project or code branch to another which does not contain the Yaml configuration files.</li>
