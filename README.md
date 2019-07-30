@@ -4,6 +4,13 @@
 
 This plugin loads Kubernetes ConfigMap, Secret and String Data values as environment variables in an IntelliJ run configuration. This allows for development of Kubernetes deployable modules without the need to run Kubernetes on local development environments which may not have enough resources.
 
+### Version Compatibility
+| Branch | IntelliJ |
+|:---:|:---:|
+| 1.0.x   | 2018+    |
+| 1.1.x   | 2019+    |
+| 1.2.x   | 2019.2   |
+
 ### Plugin Installation
 
 - Using intelliJ plugin management on Windows:
