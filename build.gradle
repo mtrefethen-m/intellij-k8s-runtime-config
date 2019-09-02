@@ -14,11 +14,11 @@
  * limitations under the License.
  */
 plugins {
-    id 'org.jetbrains.intellij' version '0.4.8'
+    id 'java'
+    id 'org.jetbrains.intellij' version '0.4.10'
 }
 
-group 'com.egoshard.intellij'
-version '1.1.2'
+version '1.2.1'
 
 ext {
     junitJupiterVersion = '5.3.1'
@@ -47,12 +47,12 @@ test {
 }
 
 intellij {
-    version '2019.1'
+    version '2019.2.1'
+    plugins 'java'
 }
 
 patchPluginXml {
-    sinceBuild '191'
-    untilBuild '191.*'
+    sinceBuild '192'
 }
 
 wrapper {
