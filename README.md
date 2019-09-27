@@ -9,7 +9,7 @@ This plugin loads Kubernetes ConfigMap, Secret and String Data values as environ
 |:---:|:---:|
 | 1.0.x   | 2018+    |
 | 1.1.x   | 2019+    |
-| 1.2.x   | 2019.2   |
+| 1.2.x   | 2019.2+  |
 
 ### Plugin Installation
 
